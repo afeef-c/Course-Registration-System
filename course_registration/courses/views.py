@@ -48,3 +48,14 @@ def create_course(request):
         form = CourseCreationForm()
 
     return render(request, 'courses/create_course.html', {'form': form})
+
+
+def student_list(request):
+    students = Student.objects.prefetch_related('enrolled_courses').all()
+    return render(request, 'courses/student_list.html', {'students': students})
+
+
+
+
+
+
